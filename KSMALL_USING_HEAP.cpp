@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+// #include <chrono>
 
 using namespace std;
 
@@ -37,7 +38,7 @@ void maxHeapFind(unsigned K)
 
 void minHeapFind(unsigned K)
 {
-    priority_queue<int, vector<int>, greater<int> > minHeap;
+    priority_queue<int, vector<int>, greater<int>> minHeap;
     for (size_t i = 0; i < 5000000 - K + 1; i++)
     {
         minHeap.push(array[i]);
@@ -61,6 +62,8 @@ int main()
     cin >> a >> b >> mod >> K;
     randomize(a, b, mod);
 
+    // std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
     if (K > 5000000 / 2)
     {
         minHeapFind(K);
@@ -69,6 +72,9 @@ int main()
     {
         maxHeapFind(K);
     }
+
+    // std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    // std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << std::endl;
 
     return 0;
 }
